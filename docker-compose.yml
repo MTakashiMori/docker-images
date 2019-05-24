@@ -1,0 +1,24 @@
+version: '3.5'
+services:
+    web:
+        container_name: app-api
+        build:
+            context: .
+            target: web
+        #command: php artisan serve --host=0.0.0.0 --port=80
+        volumes:
+            - .:/var/www/html/app
+        tty: true
+        networks:
+            main:
+                aliases:
+                    - web
+    db:
+        container_name: app-db
+        image: mariadb:10.4
+        networks:
+            main:
+                aliases:
+                    - db
+networks:
+    main:

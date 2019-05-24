@@ -1,0 +1,37 @@
+version: '3.5'
+services:
+    web:
+        container_name: cecav-api
+        build:
+            context: .
+            target: web
+        working_dir: /var/www/html/app
+        ports:
+          - "8000:80"
+        # command: php artisan serve --host=0.0.0.0 --port=80
+        volumes:
+            - .:/var/www/html/app
+        entrypoint:  [
+            "/bin/sh",
+            "/var/www/html/app/entrypoint.sh"
+        ]
+        environment:
+          - PHP_SHORT_OPEN_TAG=On
+          - PHP_ERROR_REPORTING=E_ALL
+          - PHP_DISPLAY_ERRORS=On
+          - PHP_HTML_ERRORS=On
+          - PHP_XDEBUG_ENABLED=true
+        tty: true
+        networks:
+            main:
+                aliases:
+                    - web
+    # db:
+    #     container_name: pet-adoption-db
+    #     image: mariadb:10.4
+    #     networks:
+    #         main:
+    #             aliases:
+    #                 - db
+networks:
+    main:
