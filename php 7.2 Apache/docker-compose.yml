@@ -1,0 +1,17 @@
+version: '3.5'
+services:
+    web:
+        container_name: php
+        image: mtakashimori/php7.2-apache
+        working_dir: /var/www/html/app
+        volumes:
+            - .:/var/www/html/app
+            - ./conf/httpd.conf:/etc/apache2/sites-enabled/000-default.conf
+        environment:
+          - PHP_SHORT_OPEN_TAG=On
+          - PHP_ERROR_REPORTING=E_ALL
+          - PHP_DISPLAY_ERRORS=On
+          - PHP_HTML_ERRORS=On            
+        tty: true
+        ports:
+          - "8000:80"

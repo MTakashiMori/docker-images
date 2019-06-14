@@ -30,7 +30,7 @@ RUN apk add --update --no-cache \
     php7-xmlreader \
     php7-xmlrpc \
     php7-bz2 \
-    php7-pdo_dblib \
+    php7-pdo_dblib \ 
     php7-curl \
     php7-ctype \
     php7-exif \
@@ -50,11 +50,8 @@ RUN mkdir -p /run/apache2 \
     && sed -i "s#/var/www/localhost/htdocs#/app/public#" /etc/apache2/httpd.conf \
     && printf "\n<Directory \"/app/public\">\n\tAllowOverride All\n</Directory>\n" >> /etc/apache2/httpd.conf
 
-ADD ["entrypoint.sh", "/"]
-
 RUN mkdir -p /app/public \
     && chown -R apache:apache /app \
-    && chmod -R 755 /app \
-    && chmod +x /entrypoint.sh
+    && chmod -R 755 /app
 
 EXPOSE 80
