@@ -6,7 +6,6 @@ services:
         working_dir: /var/www/html/app
         volumes:
             - .:/var/www/html/app
-            - ./conf/httpd.conf:/etc/apache2/sites-enabled/000-default.conf
         environment:
           - PHP_SHORT_OPEN_TAG=On
           - PHP_ERROR_REPORTING=E_ALL
