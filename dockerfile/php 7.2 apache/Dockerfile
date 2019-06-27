@@ -43,12 +43,12 @@ RUN mkdir -p /run/apache2 \
   && sed -i "s/#LoadModule\ session_cookie_module/LoadModule\ session_cookie_module/" /etc/apache2/httpd.conf \
   && sed -i "s/#LoadModule\ session_crypto_module/LoadModule\ session_crypto_module/" /etc/apache2/httpd.conf \
   && sed -i "s/#LoadModule\ deflate_module/LoadModule\ deflate_module/" /etc/apache2/httpd.conf \
-  && sed -i "s#^DocumentRoot \".*#DocumentRoot \"/app/public\"#g" /etc/apache2/httpd.conf \
-  && sed -i "s#/var/www/localhost/htdocs#/app/public#" /etc/apache2/httpd.conf \
-  && printf "\n<Directory \"/app/public\">\n\tAllowOverride All\n</Directory>\n" >> /etc/apache2/httpd.conf
+  && sed -i "s#^DocumentRoot \".*#DocumentRoot \"/var/www/html/app\"#g" /etc/apache2/httpd.conf \
+  && sed -i "s#/var/www/localhost/htdocs#/var/www/html/app#" /etc/apache2/httpd.conf \
+  && printf "\n<Directory \"/var/www/html/app\">\n\tAllowOverride All\n</Directory>\n" >> /etc/apache2/httpd.conf
 
-RUN mkdir -p /app \
-  && chown -R apache:apache /app \
-  && chmod -R 755 /app
+RUN mkdir -p /var/www/html/app \
+  && chown -R apache:apache /var/www/html/app \
+  && chmod -R 755 /var/www/html/app
 
 EXPOSE 80
