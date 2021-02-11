@@ -4,6 +4,7 @@ RUN apk add --no-cache --virtual .phpize-deps $PHPIZE_DEP \
  openrc \
  curl \
  g++ \
+ git \
  gcc \
  musl \
  make \
