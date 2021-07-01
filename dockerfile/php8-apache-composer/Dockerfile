@@ -23,6 +23,7 @@ RUN apk add --no-cache --virtual .phpize-deps $PHPIZE_DEP \
  php8-opcache \
  php8-openssl \
  php8-pdo \
+ php8-pdo_mysql \
  php8-pdo_pgsql \
  php8-pear \
  php8-phar \
