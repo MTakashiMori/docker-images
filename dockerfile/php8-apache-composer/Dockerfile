@@ -29,6 +29,7 @@ RUN apk add --no-cache --virtual .phpize-deps $PHPIZE_DEP \
  php8-phar \
  php8-redis \
  php8-simplexml \
+ php8-sodium \
  php8-tokenizer \
  php8-pecl-xdebug \
  php8-xml \
